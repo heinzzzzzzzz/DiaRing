@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>NavGraph.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+NavGraph.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">diaring</span><span class="s2">.</span><span class="s1">navigation</span>
+
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">runtime</span><span class="s2">.</span><span class="s1">Composable</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">navigation</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">NavHost</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">navigation</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">composable</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">navigation</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">rememberNavController</span>
+<span class="s1">import com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">diaring</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">screens</span><span class="s2">.</span><span class="s1">HomeScreen</span>
+<span class="s1">import com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">diaring</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">screens</span><span class="s2">.</span><span class="s1">FoodPlannerScreen</span>
+<span class="s1">import com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">diaring</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">screens</span><span class="s2">.</span><span class="s1">ActivityRecommendationsScreen</span>
+
+<span class="s1">sealed </span><span class="s0">class </span><span class="s1">Screen</span><span class="s2">(</span><span class="s0">val </span><span class="s1">route: String</span><span class="s2">) {</span>
+    <span class="s1">data </span><span class="s0">object </span><span class="s1">Home : Screen</span><span class="s2">(</span><span class="s3">&quot;home&quot;</span><span class="s2">)</span>
+    <span class="s1">data </span><span class="s0">object </span><span class="s1">FoodPlanner : Screen</span><span class="s2">(</span><span class="s3">&quot;food_planner&quot;</span><span class="s2">)</span>
+    <span class="s1">data </span><span class="s0">object </span><span class="s1">ActivityRecommendations : Screen</span><span class="s2">(</span><span class="s3">&quot;activity_recommendations&quot;</span><span class="s2">)</span>
+<span class="s2">}</span>
+
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">NavGraph</span><span class="s2">() {</span>
+    <span class="s0">val </span><span class="s1">navController </span><span class="s2">= </span><span class="s1">rememberNavController</span><span class="s2">()</span>
+    
+    <span class="s1">NavHost</span><span class="s2">(</span>
+        <span class="s1">navController </span><span class="s2">= </span><span class="s1">navController</span><span class="s2">,</span>
+        <span class="s1">startDestination </span><span class="s2">= </span><span class="s1">Screen</span><span class="s2">.</span><span class="s1">Home</span><span class="s2">.</span><span class="s1">route</span>
+    <span class="s2">) {</span>
+        <span class="s1">composable</span><span class="s2">(</span><span class="s1">Screen</span><span class="s2">.</span><span class="s1">Home</span><span class="s2">.</span><span class="s1">route</span><span class="s2">) {</span>
+            <span class="s1">HomeScreen</span><span class="s2">(</span><span class="s1">navController</span><span class="s2">)</span>
+        <span class="s2">}</span>
+        <span class="s1">composable</span><span class="s2">(</span><span class="s1">Screen</span><span class="s2">.</span><span class="s1">FoodPlanner</span><span class="s2">.</span><span class="s1">route</span><span class="s2">) {</span>
+            <span class="s1">FoodPlannerScreen</span><span class="s2">(</span><span class="s1">navController</span><span class="s2">)</span>
+        <span class="s2">}</span>
+        <span class="s1">composable</span><span class="s2">(</span><span class="s1">Screen</span><span class="s2">.</span><span class="s1">ActivityRecommendations</span><span class="s2">.</span><span class="s1">route</span><span class="s2">) {</span>
+            <span class="s1">ActivityRecommendationsScreen</span><span class="s2">(</span><span class="s1">navController</span><span class="s2">)</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>
